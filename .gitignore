@@ -1,0 +1,8 @@
+config.json
+speedtest_log.json
+speedtest_report_*.pdf
+cron.log
+venv/
+__pycache__/
+*.pyc
+.claude/
