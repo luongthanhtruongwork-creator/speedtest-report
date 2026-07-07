@@ -6,6 +6,16 @@
 #  Telegram token/chat id điền sau vào config.json (xem README.md).
 # ─────────────────────────────────────────────────────────────
 set -e
+
+if [ "$(id -u)" -eq 0 ]; then
+    echo "❌ Đừng chạy script này bằng 'sudo ./install.sh' hoặc với user root."
+    echo "   Chạy bình thường: ./install.sh"
+    echo "   Script sẽ tự gọi sudo cho từng bước cần quyền root."
+    echo "   (Chạy cả script bằng sudo làm \$USER = root, khiến /opt/speedtest"
+    echo "    và crontab bị đăng ký nhầm cho root thay vì user hiện tại.)"
+    exit 1
+fi
+
 INSTALL_DIR="/opt/speedtest"
 VENV="$INSTALL_DIR/venv"
 SCRIPT="$INSTALL_DIR/speedtest_report.py"
